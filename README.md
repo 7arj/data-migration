@@ -3,7 +3,7 @@
 ## Overview
 This project is a fully automated ETL pipeline that migrates student data from Google Sheets to a normalized PostgreSQL database hosted on NeonDB.
 
-## 🛠 Tech Stack
+##  Tech Stack
 - **Source:** Google Sheets API
 - **Destination:** NeonDB (PostgreSQL)
 - **Language:** Python (Pandas, SQLAlchemy)
