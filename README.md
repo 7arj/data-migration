@@ -1,32 +1,23 @@
 # Student Data Migration Project (Google Sheets → NeonDB)
 
-## Overview
-This project is a fully automated ETL pipeline that migrates student data from Google Sheets to a normalized PostgreSQL database hosted on NeonDB.
+##  Overview
+This project is a fully automated ETL pipeline that extracts student data from Google Sheets, transforms/validates it using Python (Pandas), and loads it into a normalized PostgreSQL database hosted on NeonDB.
 
-##  Tech Stack
+## Tech Stack
 - **Source:** Google Sheets API
-- **Destination:** NeonDB (PostgreSQL)
-- **Language:** Python (Pandas, SQLAlchemy)
-- **Automation:** Google Apps Script
+- **Destination:** NeonDB (PostgreSQL 15)
+- **Language:** Python 3.10 (Pandas, SQLAlchemy)
+- **Automation:** Google Apps Script (Javascript)
 
-## Database Schema
-The database is normalized to 3NF.
-- **Students** (Linked to Departments)
-- **Departments** (Unique List)
-- **Courses & Enrollments** (Many-to-Many relationship)
+##  Project Structure
+- `etl.py`: Main ETL script for Student Data.
+- `etl_public.py`: Modular script for Public Dataset (CSV) ingestion.
+- `schema.sql`: Database schema (3NF) creation script.
+- `queries.sql`: Analytical SQL queries.
+- `google_apps_script.js`: Validation logic for Google Sheets.
 
-## ETL Execution
-The Python script extracts data, removes duplicates, validates emails, and loads it into NeonDB.<br>
-![](./screenshots/processed.png)
-
-## SQL Analysis & Optimization
-**Total Students per Department:**
-![Total Students per Department](./screenshots/students-per-department.png)
-
-**Query Optimization:**
-Used `EXPLAIN ANALYZE` to verify index usage on Email lookups.
-![](./screenshots/optimization.png)
-
-## Automation 
-Google Sheets automatically validates data entry using Apps Script before ingestion.
-![Insert Screenshot of Green/Red validation in Sheets](./screenshots/validation.png)
+##  Setup & Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/7arj/data-migration.git
+   cd data-migration
